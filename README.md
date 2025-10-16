@@ -21,7 +21,7 @@ Passionate about **Back-End Development**, I focus on building efficient, scalab
 - [MobileShoppe](https://github.com/DoChien2024/MobileShoppe)
 
 ## 🌍 Live Demo
-👉 [https://dochien2024.github.io/DoXuanChien-Portfolio](https://dochien2024.github.io/DoXuanChien-Portfolio)
+👉 [https://dochien2024.github.io/portfolio/](https://dochien2024.github.io/portfolio/)
 
 ## 📬 Contact
 - **Email:** chiendo2024@gmail.com  
