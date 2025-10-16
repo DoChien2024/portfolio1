@@ -1,0 +1,582 @@
+/* style.css */
+
+/* ===================================================
+--- RESET & UTILITIES --- 
+=================================================== */
+:root {
+    /* DARK MODE - TONE ĐEN ĐẬM / TRẮNG / XÁM */
+    --color-background-dark: #000000; 
+    --color-background-light: #1c1c1c; /* Nền thẻ/khối */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc; 
+    --color-accent: #666666; /* ĐÃ CHỈNH: Màu accent sang xám đậm */
+    --color-link: #888888; /* Màu link mặc định */
+    --color-border: #333333; 
+    --max-width: 1200px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-background-dark);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: var(--color-link);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--color-text-primary); /* ĐÃ CHỈNH: Khi hover, link chuyển sang màu trắng */
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.section {
+    padding: 3rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-weight: 800;
+}
+
+h2 {
+    font-size: 2.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--color-text-secondary); 
+}
+
+.lead {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+}
+
+strong {
+    /* ĐÃ CHỈNH: Strong dùng màu text-primary hoặc accent (xám) */
+    color: var(--color-text-primary); 
+    font-weight: 700;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: 1.5rem 0;
+}
+
+/* ===================================================
+--- TOPBAR / HEADER --- 
+=================================================== */
+.topbar {
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--color-background-dark);
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.3s, border-color 0.3s; 
+}
+
+.topbar-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* BRAND (LOGO + TEXT) */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; 
+}
+
+.brand-logo {
+    width: 40px; 
+    height: 40px;
+    border-radius: 8px; 
+    object-fit: cover;
+}
+
+.brand-title {
+    font-size: 1.8rem; 
+    color: var(--color-text-primary);
+    font-weight: 800;
+    line-height: 1; 
+}
+
+/* NAVIGATION LINKS */
+.nav a {
+    color: var(--color-text-primary); 
+    margin-left: 1.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    text-transform: uppercase;
+    
+    /* Hiệu ứng gạch chân động */
+    position: relative;
+    padding-bottom: 5px; 
+    transition: color 0.3s ease; 
+}
+
+.nav a::after {
+    content: '';
+    position: absolute;
+    width: 0; 
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    /* ĐÃ CHỈNH: Gạch chân dùng màu accent (xám) */
+    background-color: var(--color-accent); 
+    transition: width 0.3s ease-out; 
+}
+
+.nav a:hover {
+    /* ĐÃ CHỈNH: Khi hover, chữ chuyển sang màu accent (xám) */
+    color: var(--color-accent); 
+}
+
+.nav a:hover::after {
+    width: 100%; 
+}
+
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    /* ĐÃ CHỈNH: Icon theme toggle dùng màu text-primary */
+    color: var(--color-text-primary); 
+}
+
+/* ===================================================
+--- HERO SECTION --- 
+=================================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 6rem; 
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* ĐÃ CHỈNH: Bỏ màu hồng/xanh, dùng gradient xám */
+    background: radial-gradient(circle at 75% 50%, rgba(102, 102, 102, 0.1), transparent 50%), 
+                radial-gradient(circle at 25% 60%, rgba(136, 136, 136, 0.1), transparent 50%);
+    opacity: 0.7; 
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    gap: 5rem;
+}
+
+.hero-text {
+    flex: 1;
+    text-align: left; 
+}
+
+.name-line {
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.big-name {
+    font-size: 4.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0; 
+}
+
+.hero-text h3 {
+    font-size: 2rem;
+    margin-top: 0.5rem;
+    /* ĐÃ CHỈNH: Màu h3 dùng màu accent (xám) */
+    color: var(--color-accent); 
+}
+
+.hero-text .lead {
+    margin-top: 1.5rem;
+    max-width: 80%; 
+}
+
+.avatar-container {
+    flex-shrink: 0;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    /* ĐÃ CHỈNH: Viền avatar dùng màu accent (xám) */
+    border: 5px solid var(--color-accent); 
+    /* ĐÃ CHỈNH: Bóng avatar dùng màu accent (xám) */
+    box-shadow: 0 0 30px rgba(102, 102, 102, 0.7); 
+    margin-top: 2rem;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.avatar:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-out;
+}
+
+.cta {
+    display: inline-block;
+    /* ĐÃ CHỈNH: CTA dùng màu accent (xám) */
+    background-color: var(--color-accent); 
+    color: var(--color-text-primary);
+    padding: 0.75rem 2rem;
+    margin-top: 2rem;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cta:hover {
+    /* ĐÃ CHỈNH: Hover CTA dùng màu xám nhạt hơn */
+    background-color: #888888; 
+    transform: translateY(-2px);
+}
+
+/* ===================================================
+--- ABOUT SECTION --- 
+=================================================== */
+.about p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 800px;
+}
+
+/* ===================================================
+--- SKILLS SECTION --- 
+=================================================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.skill-group {
+    background-color: var(--color-background-light); 
+    padding: 2rem;
+    border-radius: 8px;
+    /* ĐÃ SỬA: Thay border-left bằng border 1px solid (giống project-card) */
+    border: 1px solid var(--color-border);
+    /* ĐÃ SỬA: Bóng đổ ban đầu nhẹ hơn, giống project-card */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    height: 100%; 
+    
+    /* ĐÃ SỬA: Dùng transition đầy đủ như project-card */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+    cursor: default; 
+}
+
+.skill-group:hover {
+    /* ĐÃ SỬA: Giống với hover của project-card, thêm đổi màu border */
+    transform: scale(1.02); 
+    box-shadow: 0 15px 35px rgba(102, 102, 102, 0.3); 
+    border-color: var(--color-accent); /* Đổi màu viền khi hover */
+}
+
+.skill-group h3 {
+    font-size: 1.5rem;
+    /* ĐÃ SỬA: Tiêu đề dùng màu ĐEN ĐẬM/TRẮNG ĐẬM */
+    color: var(--color-text-primary); 
+    margin-bottom: 1.5rem;
+}
+
+.skill-group ul {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-group li {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    /* Giữ nguyên đường kẻ dưới */
+    border-bottom: 1px dashed var(--color-border); 
+    /* ĐÃ SỬA: List items dùng màu ĐEN ĐẬM/TRẮNG ĐẬM */
+    color: var(--color-text-primary); 
+    display: flex;
+    align-items: center;
+}
+
+.skill-group li:last-child {
+    border-bottom: none;
+}
+
+.skill-group li::before {
+    content: "•";
+    /* Giữ nguyên màu accent cho dấu chấm */
+    color: var(--color-accent); 
+    font-weight: bold;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+
+.skill-group hr {
+    display: none; 
+}
+
+/* ===================================================
+--- PROJECTS SECTION --- 
+=================================================== */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background-color: var(--color-background-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+    
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, border-color 0.3s ease-out;
+}
+
+.project-card:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 15px 35px rgba(102, 102, 102, 0.3); 
+    border-color: var(--color-accent); 
+}
+
+.project-card h3 {
+    font-size: 1.35rem;
+    margin-top: 0.5rem;
+}
+
+.project-desc {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    min-height: 4.5rem; 
+}
+
+.tech-stack {
+    font-size: 0.9rem;
+   
+    color: var(--color-accent); 
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.project-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+}
+
+.link-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    /* ĐÃ CHỈNH: Nút link dùng màu accent (xám) */
+    background-color: var(--color-accent); 
+    color: var(--color-text-primary);
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.link-btn:hover {
+    /* ĐÃ CHỈNH: Hover nút link dùng màu xám nhạt hơn */
+    background-color: #888888; 
+}
+
+/* ===================================================
+--- CONTACT SECTION --- 
+=================================================== */
+.links-list {
+    list-style: none;
+    padding: 0;
+    font-size: 1.1rem;
+}
+
+.links-list li {
+    margin-bottom: 0.8rem;
+    color: var(--color-text-secondary);
+}
+
+.links-list a {
+    /* ĐÃ CHỈNH: Link trong contact dùng màu accent (xám) */
+    color: var(--color-accent); 
+}
+.links-list a:hover {
+    color: var(--color-text-primary); /* Khi hover chuyển sang màu trắng */
+}
+
+/* ===================================================
+--- FOOTER --- 
+=================================================== */
+.footer {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+/* ===================================================
+--- MEDIA QUERIES (Responsive Design) --- 
+=================================================== */
+@media (max-width: 992px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center; 
+        padding-top: 10rem;
+    }
+
+    .hero-text {
+        text-align: center; 
+    }
+
+    .hero-text .lead {
+        max-width: 100%;
+    }
+
+    .avatar-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .big-name {
+        font-size: 3rem;
+    }
+
+    .hero-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .topbar-inner {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .nav a {
+        margin: 0 0.5rem;
+    }
+
+    .topbar {
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 2rem;
+    }
+    
+    .nav {
+        display: none; 
+    }
+
+    .topbar-inner {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================================
+--- LIGHT MODE (ĐIỀU CHỈNH CHO CHỨC NĂNG BẬT/TẮT) ---
+=================================================== */
+body.light { 
+    /* LIGHT MODE - TONE TRẮNG / ĐEN ĐẬM */
+    --color-background-dark: #ffffff; 
+    --color-background-light: #f0f0f0; /* Nền thẻ/khối */
+    --color-text-primary: #111111; 
+    --color-text-secondary: #555555; 
+    --color-border: #dddddd; 
+    --color-accent: #888888; /* ĐÃ CHỈNH: Màu accent sang xám đậm trong Light Mode */
+    --color-link: #444444; /* Màu link mặc định trong Light Mode */
+}
+
+body.light .topbar {
+    background-color: var(--color-background-dark);
+    border-bottom: 1px solid var(--color-border);
+}
+
+body.light .btn {
+    color: var(--color-text-primary);
+}
+
+body.light .hero-bg {
+    opacity: 0.1;
+    /* ĐÃ CHỈNH: Bỏ màu hồng/xanh, dùng gradient xám trong Light Mode */
+    background: radial-gradient(circle at 75% 50%, rgba(136, 136, 136, 0.1), transparent 50%), 
+                radial-gradient(circle at 25% 60%, rgba(170, 170, 170, 0.1), transparent 50%);
+}
+
+body.light .skill-group {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    border-left-color: var(--color-accent); 
+}
+
+body.light .skill-group:hover {
+    box-shadow: 0 10px 30px rgba(136, 136, 136, 0.2); /* ĐÃ CHỈNH */
+}
+
+body.light .project-card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--color-border);
+}
+
+body.light .project-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-accent); 
+}
+
+body.light .cta:hover {
+    background-color: var(--color-text-secondary); /* ĐÃ CHỈNH: Hover CTA dùng màu xám */
+}
+
+body.light .links-list a:hover {
+    color: var(--color-text-primary); /* Khi hover chuyển sang màu đen */
+}
+
+
+body.light .footer {
+    border-top: 1px solid var(--color-border);
+}
